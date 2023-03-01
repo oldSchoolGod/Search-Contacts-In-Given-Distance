@@ -56,7 +56,9 @@
             <lightning-input 
             type="number"  
             label="Distance"
+            name="distance"
             onchange={handleInputChange}
+            class="name"
             > 
             </lightning-input>
 
@@ -71,7 +73,7 @@
   <!--DataTable-->
   <div style="height: 300px;">
     <lightning-datatable
-            key-field="id"
+            key-field="Id"
             data={contacts}
             columns={columns}>
     </lightning-datatable>
