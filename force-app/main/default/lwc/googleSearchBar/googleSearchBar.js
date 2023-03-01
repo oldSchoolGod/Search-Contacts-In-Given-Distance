@@ -5,7 +5,9 @@ import findContacts from '@salesforce/apex/SearchApiAddressCtrl.getRecordInGiven
 
 
 const columns = [
-    { label: 'Name', fieldName: 'FirstName' },
+    { label: 'FirstName', fieldName: 'conName',type: 'url',
+    typeAttributes: {label: { fieldName: 'FirstName' }, target: '_blank'}
+},
     { label: 'Last Name', fieldName: 'LastName' },
 ];
   
@@ -143,10 +145,13 @@ export default class SearchAPIAddress extends LightningElement {
             .then((result) => {
                 console.log('Contacts' + JSON.stringify(result));
                 this.contacts = result.map(type => {
+                    
                     // TODO: complete the logic
                     return {
+                         conName:'/' + type.Id,
                          FirstName: type.FirstName,
-                         LastName: type.LastName
+                         LastName: type.LastName,
+                         
                     }
                   });
                 this.error = undefined;
