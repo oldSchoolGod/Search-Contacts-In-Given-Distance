@@ -10,7 +10,7 @@ public class SearchApiAddressCtrl {
             Http http = new Http();
             HttpRequest Request = new HttpRequest();
             Request.setMethod('GET');
-            Request.setEndPoint('https://maps.googleapis.com/maps/api/place/autocomplete/json?input='+searchString+'&key=AIzaSyALaRlPFhI9nH_NofftZvcNNqaNL6trq48');
+            Request.setEndPoint('https://maps.googleapis.com/maps/api/place/autocomplete/json?input='+searchString+'&key={API_KEY}');
             HttpResponse Response = http.send(Request);
             if(Response.getStatusCode()==200){
                 System.debug('res.getbody' + Response.getBody());
@@ -41,7 +41,7 @@ public class SearchApiAddressCtrl {
         if(String.isNotBlank(placeId)){
             String strURL = 'https://maps.googleapis.com/maps/api/place/details/json?'
                 + 'placeid=' + EncodingUtil.urlEncode(placeId, 'UTF-8')
-                + '&key=AIzaSyALaRlPFhI9nH_NofftZvcNNqaNL6trq48'; 
+                + '&key={{API_KEY}}'; 
             Http h = new Http();
             HttpRequest req = new HttpRequest();
             HttpResponse res = new HttpResponse();
