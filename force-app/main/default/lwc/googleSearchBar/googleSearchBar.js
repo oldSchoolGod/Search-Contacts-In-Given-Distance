@@ -141,6 +141,15 @@ export default class SearchAPIAddress extends LightningElement {
     }
 
     handleClick(event) {
+        console.log('hello');
+        const inputField = this.template.querySelector('.name');
+        if (!inputField.value) {
+            console.log('hello3');
+            // Input field is empty
+            inputField.setCustomValidity('Please enter Distance');
+            inputField.reportValidity();
+        }else{
+
         findContacts({ latitude: this.latitude, longitude: this.longitude, unit: this.value, distance:this.distance})
             .then((result) => {
                 console.log('Contacts' + JSON.stringify(result));
@@ -160,6 +169,7 @@ export default class SearchAPIAddress extends LightningElement {
                 this.error = error;
                 this.contacts = undefined;
             });
+        }
     }
 
     value = 'Km';
