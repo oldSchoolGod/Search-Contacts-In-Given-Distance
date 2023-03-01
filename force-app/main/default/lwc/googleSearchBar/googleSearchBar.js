@@ -196,7 +196,7 @@ export default class SearchAPIAddress extends LightningElement {
 //         this.city =  event.target.city;
 //         this.state = event.target.state;
 //         this.country = event.target.country;
-//         this.pincode = event.target.pincode;
+//         this.pincode = event.target.pincode
 
        
 //     }
