@@ -1,0 +1,79 @@
+<template>
+    <!-- Address Search Modal-->
+ 
+    <lightning-card  variant="Narrow"  title="Google Search Address" icon-name="standard:address">
+        <div class="slds-var-p-around_small">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around-small" size="12" medium-device-size="12" large-device-size="12">
+                    <lightning-input type="search" variant="label-hidden" class="searchAddress" name="searchAddress"
+                        placeholder="Search Address.." onchange={handleChange} value={selectedAddress}>
+                    </lightning-input>
+                    <!-- Address Recommendations -->
+                    <div if:true={hasRecommendations}>
+                        <div class="address-recommendations" role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+                                role="presentation">
+                                <template for:each={addressRecommendations} for:item="addressRecommendation">
+                                    <li key={addressRecommendation} role="presentation"
+                                        onclick={handleAddressRecommendationSelect}
+                                        data-value={addressRecommendation.place_id} class="slds-listbox__item">
+                                        <span
+                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                            role="option">
+                                            <span class="slds-media__body slds-m-left_xx-small slds-m-bottom_xx-small">
+                                                <div class="slds-grid slds-m-bottom_small">
+                                                    <div class="slds-col slds-size_1-of-10">
+                                                        <lightning-button-icon size="medium" icon-name="utility:checkin"
+                                                            class="slds-input__icon" variant="bare" onclick={resetAddress}>
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                    <div class="slds-m-left_medium slds-col slds-size_8-of-10">
+                                                        <span
+                                                            class="slds-listbox__option-text slds-listbox__option-text_entity"><b>{addressRecommendation.main_text}</b></span>
+                                                        <span
+                                                            class="slds-listbox__option-text slds-listbox__option-text_entity slds-m-top_xxx-small">{addressRecommendation.secondary_text}</span>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-10"></div>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <!--Miles and Km Picklist-->
+                <lightning-combobox
+                name="progress"
+                label="Unit"
+                value={value}
+                placeholder="Select KM/MI"
+                options={options}
+                onchange={handleChangeUnit} ></lightning-combobox>
+
+            <!--Input Distance-->
+            <lightning-input 
+            type="number"  
+            label="Distance"
+            onchange={handleInputChange}
+            > 
+            </lightning-input>
+
+            <!-- selected address info -->
+            <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+              
+            </lightning-layout>
+        </div>
+  </lightning-card>
+
+
+  <!--DataTable-->
+  <div style="height: 300px;">
+    <lightning-datatable
+            key-field="id"
+            data={contacts}
+            columns={columns}>
+    </lightning-datatable>
+</div>
+</template>
