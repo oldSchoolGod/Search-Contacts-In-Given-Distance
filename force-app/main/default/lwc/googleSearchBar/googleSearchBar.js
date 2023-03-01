@@ -24,6 +24,8 @@ export default class SearchAPIAddress extends LightningElement {
     latitude;
     longitude;
     distance;
+
+    columns = columns;
     
   
     get hasRecommendations() {
@@ -199,6 +201,4 @@ export default class SearchAPIAddress extends LightningElement {
        
 //     }
 
-data = [];
-columns = columns;
 }
