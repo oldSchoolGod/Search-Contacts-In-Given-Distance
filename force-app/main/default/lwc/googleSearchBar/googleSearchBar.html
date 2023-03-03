@@ -44,29 +44,41 @@
                     </div>
                 </lightning-layout-item>
                 <!--Miles and Km Picklist-->
-                <lightning-combobox
-                name="progress"
-                label="Unit"
-                value={value}
-                placeholder="Select KM/MI"
-                options={options}
-                onchange={handleChangeUnit} ></lightning-combobox>
+                <div class="css" style="display:flex; width: 100%; justify-content: center;">
+                    <div class="css1">
+                        <lightning-combobox
+                        name="progress"
+                        label="Unit"
+                        value={value}
+                        placeholder="Select KM/MI"
+                        options={options}
+                        onchange={handleChangeUnit} ></lightning-combobox>
+                    </div>
+                    <div class="css2" style="margin-left: 10px; width: 4.6%;">
 
-            <!--Input Distance-->
-            <lightning-input 
-            type="number"  
-            label="Distance"
-            name="distance"
-            onchange={handleInputChange}
-            class="name"
-            > 
-            </lightning-input>
+                        <lightning-input 
+                        type="number"  
+                        label="Distance"
+                        name="distance"
+                        onchange={handleInputChange}
+                        class="name"
+                        > 
+                        </lightning-input>
+            
+                        <!-- selected address info -->
 
-            <!-- selected address info -->
-            <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                
+                </div>
+               
               
             </lightning-layout>
         </div>
+        <div style="margin-left: 46%;">
+            <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+        </div>
+
   </lightning-card>
 
 
